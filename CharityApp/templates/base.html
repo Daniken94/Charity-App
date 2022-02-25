@@ -37,7 +37,7 @@
 
         <ul>
           <li><a href="{% url 'donations:landingpage' %}" class="btn btn--without-border active">Start</a></li>
-          <li><a href="/#steps" class="btn btn--without-border">O co chodzi?</a></li>
+          <li><a href="{% url 'donations:landingpage' %}#steps" class="btn btn--without-border">O co chodzi?</a></li>
           <li><a href="/#about-us" class="btn btn--without-border">O nas</a></li>
           <li><a href="/#help" class="btn btn--without-border">Fundacje i organizacje</a></li>
           <li><a href="{% url 'donations:adddonation' %}" class="btn btn--without-border">Przekaż dary</a></li>

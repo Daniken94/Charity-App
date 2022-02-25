@@ -2,9 +2,6 @@ from django.db import models
 from django.forms import NullBooleanField
 from django.conf import settings
 
-# czy ma byc nullboleanfield 51
-# czy ma być auth_user_model 51
-# self.categories.name jak to wyświetlić w index.html
 
 
 class Category(models.Model):
@@ -48,7 +45,7 @@ class Donations(models.Model):
     pick_up_date = models.DateField(auto_now_add=False, verbose_name="Paczka będzie gotowa do odbioru dnia: ")
     pick_up_time = models.TimeField(auto_now=False, auto_now_add=False, verbose_name="Paczka będzie gotowa do odbioru o godzinie: ")
     pick_up_comment = models.TextField(max_length=240, verbose_name="Komentarz dla kuriera")
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, null=True, default=NullBooleanField) 
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, null=True, blank=True) 
     institution = models.ForeignKey(Institution, on_delete=models.PROTECT)
     categories = models.ManyToManyField("Category")
   
