@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # local
     'Donations.apps.DonationsConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 from .models import Donations, Institution
+from django.contrib.auth.forms import UserCreationForm
 
 
 # "count_bags": count_bags
@@ -39,5 +40,3 @@ class Login(View):
 class Register(View):
     def get(self, request):
         return render(request, "register.html")
-
-

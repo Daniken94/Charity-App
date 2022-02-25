@@ -2,9 +2,9 @@ from django.db import models
 from django.forms import NullBooleanField
 from django.conf import settings
 
-# czy ma byc nullboleanfield
-# czy ma być auth_user_model
-# self.categories.name jak to wyświetlić
+# czy ma byc nullboleanfield 51
+# czy ma być auth_user_model 51
+# self.categories.name jak to wyświetlić w index.html
 
 
 class Category(models.Model):
