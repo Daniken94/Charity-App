@@ -4,6 +4,7 @@ from django.conf import settings
 
 # czy ma byc nullboleanfield
 # czy ma być auth_user_model
+# self.categories.name jak to wyświetlić
 
 
 class Category(models.Model):
@@ -38,7 +39,7 @@ class Institution(models.Model):
 
 
 class Donations(models.Model):
-    quantity = models.IntegerField()
+    quantity = models.IntegerField(verbose_name="Podal liczbe worków 60l z podarunkami.")
     city = models.CharField(max_length=120, verbose_name="Podaj miasto.")
     street = models.CharField(max_length=120, verbose_name="Podaj nazwę ulicy.")
     home_number = models.IntegerField(verbose_name="Podaj numer domu/mieszkania.")
@@ -53,3 +54,7 @@ class Donations(models.Model):
   
     class Meta:
         verbose_name_plural = "Donations"
+
+
+    def __str__(self):
+        return f"{self.user} przekazał {self.quantity} worków z {self.categories.name} dla {self.institution}"
