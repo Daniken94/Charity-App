@@ -23,23 +23,26 @@
 {% endblock%}
       <nav class="container container--70">
         <ul class="nav--actions">
+          {% if user.is_authenticated %}
           <li class="logged-user">
-            Witaj Użyszkodniku
+            Witaj {{request.user.first_name}}
             <ul class="dropdown">
               <li><a href="#">Profil</a></li>
               <li><a href="#">Ustawienia</a></li>
-              <li><a href="#">Wyloguj</a></li>
+              <li><a href="{% url 'users:logout' %}">Wyloguj</a></li>
             </ul>
           </li>
-          <li><a href="{% url 'donations:login' %}" class="btn btn--small btn--without-border">Zaloguj</a></li>
-          <li><a href="{% url 'donations:register' %}" class="btn btn--small btn--highlighted">Załóż konto</a></li>
+          {% else %}
+          <li><a href="{% url 'users:login' %}" class="btn btn--small btn--without-border">Zaloguj</a></li>
+          <li><a href="{% url 'users:register' %}" class="btn btn--small btn--highlighted">Załóż konto</a></li>
+          {% endif %}
         </ul>
 
         <ul>
           <li><a href="{% url 'donations:landingpage' %}" class="btn btn--without-border active">Start</a></li>
           <li><a href="{% url 'donations:landingpage' %}#steps" class="btn btn--without-border">O co chodzi?</a></li>
-          <li><a href="/#about-us" class="btn btn--without-border">O nas</a></li>
-          <li><a href="/#help" class="btn btn--without-border">Fundacje i organizacje</a></li>
+          <li><a href="{% url 'donations:landingpage' %}#about-us" class="btn btn--without-border">O nas</a></li>
+          <li><a href="{% url 'donations:landingpage' %}#help" class="btn btn--without-border">Fundacje i organizacje</a></li>
           <li><a href="{% url 'donations:adddonation' %}" class="btn btn--without-border">Przekaż dary</a></li>
           <li><a href="#contact" class="btn btn--without-border">Kontakt</a></li>
         </ul>

@@ -18,7 +18,7 @@ class LandingPage(View):
         
 
         count_organ = Donations.objects.all().count()
-        count_bags = Donations.objects.filter("quantity").count()
+        # count_bags = Donations.objects.filter("quantity").count()
 
         return render(request, "index.html", {"count_organ": count_organ, "fundations": fundations, "organ": organ, "local": local})
         # "count_bags": count_bags
