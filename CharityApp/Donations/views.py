@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import View
+from django.db.models import Count, Min, Max, Avg, Sum
 from .models import Donations, Institution
 from django.contrib.auth.forms import UserCreationForm
 
@@ -11,17 +12,24 @@ from django.contrib.auth.forms import UserCreationForm
 
 class LandingPage(View):
     def get(self, request):
-        donations = Donations.objects.all()
         fundations = Institution.objects.filter(type="fundacja")
         organ = Institution.objects.filter(type="organizacja pozarządowa")
         local = Institution.objects.filter(type="zbiórka lokalna")
         
+        count_organ = Donations.objects.all().values('institution')
+        count_bags = Donations.objects.all().aggregate(Sum('quantity'))
 
-        count_organ = Donations.objects.all().count()
-        # count_bags = Donations.objects.filter("quantity").count()
+        empty = []
+        count_organs = 0
+        for i in count_organ:
+            if i not in empty:
+                count_organs += 1
+                empty.append(i)
+    
 
-        return render(request, "index.html", {"count_organ": count_organ, "fundations": fundations, "organ": organ, "local": local})
-        # "count_bags": count_bags
+        return render(request, "index.html", {"fundations": fundations, "organ": organ, "local": local, 
+                                                "count_bags": count_bags, "count_organs": count_organs})
+        
 
 
 

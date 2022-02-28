@@ -3,15 +3,14 @@ from . import views
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import Login, Register
+from .views import Login, LogoutUser, Register
 
 
 
 app_name = "users"
 
 urlpatterns = [
-    path('logina/', Login.as_view(), name='logina'),
-    path('login/', views.loginuser, name='login'),
-    path('logout/', views.logoutuser, name='logout'),
+    path('login/', Login.as_view(), name='login'),
+    path('logout/', LogoutUser.as_view(), name='logout'),
     path('register/', Register.as_view(), name='register'),
 ]

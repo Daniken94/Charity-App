@@ -19,21 +19,14 @@ class Register(View):
             # return redirect('register')
 
 
+
+
 class Login(View):
     def get(self, request):
         form = MyLoginForm()
         return render(request, "login.html", {"form": form})
 
     def post(self, request):
-        form = MyLoginForm(request.POST)
-        if form.is_valid():
-            user = form.authenticated
-
-
-
-def loginuser(request):
-
-    if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
 
@@ -41,25 +34,19 @@ def loginuser(request):
 
         if user is not None:
             login(request, user)
-            return render(request, "index.html")
+            return redirect("/")
         else:
-            return render(request, "login.html")
-
-    return render(request, "login.html")
+            return redirect("/users/login/")
 
 
 
 
-# class LogoutUser(View):
-#     def post(request):
-#         logout(request)
-#         return redirect("/login/")
+class LogoutUser(View):
+    def get(self, request):
+        logout(request)
+        return redirect("/")
 
 
-
-def logoutuser(request):
-    logout(request)
-    return redirect("/")
 
 
 

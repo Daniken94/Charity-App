@@ -54,4 +54,4 @@ class Donations(models.Model):
 
 
     def __str__(self):
-        return f"{self.user} przekazał {self.quantity} worków z {self.categories.name} dla {self.institution}"
+        return f"{self.user} przekazał {self.quantity} worków dla {self.institution}"
