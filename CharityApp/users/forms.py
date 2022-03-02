@@ -26,16 +26,10 @@ class MyRegisterForm(UserCreationForm):
         return user
 
 
-class MyLoginForm(forms.Form):
+class LoginForm(forms.Form):
     username = forms.CharField(required=True)
     password = forms.CharField(required=True)
 
-    def auth(self, commit=True):
-        user = super(MyLoginForm, self).auth(commit=False)
-        user.username = self.cleaned_data["username"]
-        user.password = self.cleaned_data["password"]
-
-        if commit:
-            user.authenticate(username=user.username, password=user.password)
-
-        return user
+    class Meta:
+        model = User
+        fields = ("username", "password")

@@ -23,7 +23,6 @@ class Institution(models.Model):
         ("organizacja pozarządowa", "organizacja pozarządowa"),
         ("zbiórka lokalna", "zbiórka lokalna"),
     )
-
     name = models.CharField(max_length=120)
     description = models.TextField(default="", blank=True)
     type = models.CharField(max_length=24, choices=type_choices, default="fundacja")
