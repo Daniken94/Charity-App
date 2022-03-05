@@ -53,9 +53,8 @@ class UserPage(View):
     def get(self, request):
         current_user = request.user.id
         user_don = Donations.objects.filter(user_id=current_user)
-        inst = Institution.objects.all()
 
-        return render(request, "profile.html", {"user_don": user_don, "inst": inst})
+        return render(request, "profile.html", {"user_don": user_don})
 
 
 

@@ -3,9 +3,8 @@ from django.views import View
 from django.db.models import Count, Min, Max, Avg, Sum
 from .models import Category, Donations, Institution
 from django.contrib.auth.forms import UserCreationForm
+from .forms import AddDonationForm
 
-
-# "count_bags": count_bags
 
 
 
@@ -27,10 +26,21 @@ class LandingPage(View):
 
 class AddDonation(View):
     def get(self, request):
+        form = AddDonationForm()
+
         current_user = request.user.id
         category = Category.objects.all()
         inst = Institution.objects.all()
         if current_user is not None:
-            return render(request, "form.html", {"category": category, "inst": inst})
+            return render(request, "form.html", {"category": category, "inst": inst, "form": form})
         else:
             return redirect("/users/login/")
+
+    def post(self, request):
+        form = AddDonationForm(request.POST, user=request.user)
+        
+        if form.is_valid():
+            donation = form.save(commit=False)
+            donation.user = request.user
+            donation.save()
+        return render(request, "form-confirmation.html", {"form": form})

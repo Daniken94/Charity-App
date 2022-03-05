@@ -87,17 +87,19 @@
         {% for i in user_don %}
           <li>
             <div class="col">
-              <div class="subtitle">Przekazano</div>
-              <div class="title">{{ i.quantity }} worków </div>
-              <div class="subtitle">W workach znajdowały się między innymi:</div>
+              <div class="subtitle">Przekazano worków: </div>
+              <div class="title">{{ i.quantity }}</div>
+              <div class="subtitle">Znajdowały się w nich między innymi:</div>
               {% for v in i.categories.all %}
               {{ v.name }}
               {% endfor %}
             </div>
     
-            <div class="col"><div class="text"> 
-              {{ i.institution.name }}
-            </div></div>
+            <div class="col">
+            
+            <div class="title">{{ i.institution.name }}</div> <br>
+            <div class="subtitle">{{ i.institution.description }}</div> <br>
+     </div>
           </li>
           {% endfor %}
   
