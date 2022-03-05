@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+  <title>Użytkownik</title>
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script src="{% static 'js/app.js' %}" async defer></script>
+{% endblock %}
+
+{% block header %}
+<header class="header--login-page">
+{% endblock%}
+
+{% block container %}
+  <section id="help" class="help">
+    <h2>Witaj {{ request.user.first_name }}</h2>
+
+  
+    <!-- SLIDE 1 -->
+    <div class="help--slides active" data-id="1">
+      <p>Twoje dane</p>
+      
+      <ul class="help--slides-items">
+        <li>
+          <div class="col">
+            <div class="title">Imię</div>
+          </div>
+  
+          <div class="col"><div class="text"> 
+            {{ request.user.first_name }}
+          </div></div>
+        </li>
+
+        <li>
+            <div class="col">
+              <div class="title">Nazwisko</div>
+            </div>
+    
+            <div class="col"><div class="text"> 
+              {{ request.user.last_name }}
+            </div></div>
+          </li>
+
+          <li>
+            <div class="col">
+              <div class="title">Adres email</div>
+            </div>
+    
+            <div class="col"><div class="text"> 
+              {{ request.user.email }}
+            </div></div>
+          </li>
+
+          <li>
+            <div class="col">
+              <div class="title">Kiedy do nas dołączyłeś</div>
+            </div>
+    
+            <div class="col"><div class="text"> 
+              {{ request.user.date_joined }}
+            </div></div>
+          </li>
+
+          <li>
+            <div class="col">
+              <div class="title">Ostatnie logowanie</div>
+            </div>
+    
+            <div class="col"><div class="text"> 
+              {{ request.user.last_login }}
+            </div></div>
+          </li>
+      </ul>
+
+      <h2>Twoje darowizny</h2>
+
+  
+      <!-- SLIDE 1 -->
+      <div class="help--slides active" data-id="1">
+        <p>Dziekujemy za wsparcie naszych organizacji</p>
+        
+        <ul class="help--slides-items">
+        {% for i in user_don %}
+          <li>
+            <div class="col">
+              <div class="subtitle">Przekazano</div>
+              <div class="title">{{ i.quantity }} worków </div>
+              <div class="subtitle">W workach znajdowały się między innymi:</div>
+              {% for v in i.categories.all %}
+              {{ v.name }}
+              {% endfor %}
+            </div>
+    
+            <div class="col"><div class="text"> 
+              {{ i.institution.name }}
+            </div></div>
+          </li>
+          {% endfor %}
+  
+        </ul>
+
+
+
+    </div>
+  </section>
+{% endblock %}
