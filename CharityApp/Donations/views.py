@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from django.db.models import Count, Min, Max, Avg, Sum
-from .models import Donations, Institution
+from .models import Category, Donations, Institution
 from django.contrib.auth.forms import UserCreationForm
 
 
@@ -27,4 +27,10 @@ class LandingPage(View):
 
 class AddDonation(View):
     def get(self, request):
-        return render(request, "form.html")
+        current_user = request.user.id
+        category = Category.objects.all()
+        inst = Institution.objects.all()
+        if current_user is not None:
+            return render(request, "form.html", {"category": category, "inst": inst})
+        else:
+            return redirect("/users/login/")
