@@ -32,7 +32,7 @@ class AddDonation(View):
         inst = Institution.objects.all()
 
         if current_user is not None:
-            return render(request, "form2.html", {"category": category, "inst": inst, "form": form})
+            return render(request, "form.html", {"category": category, "inst": inst, "form": form})
         else:
             return redirect("/users/login/")
 

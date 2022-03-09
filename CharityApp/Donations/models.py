@@ -40,7 +40,7 @@ class Donations(models.Model):
     street = models.CharField(max_length=120, verbose_name="Podaj nazwę ulicy.")
     home_number = models.IntegerField(verbose_name="Podaj numer domu/mieszkania.")
     phone_number = models.IntegerField()
-    zip_code = models.CharField(max_length=5, default="42680", verbose_name="Podaj kod pocztowy.")
+    zip_code = models.CharField(max_length=5, verbose_name="Podaj kod pocztowy.")
     pick_up_date = models.DateField(auto_now_add=False, verbose_name="Paczka będzie gotowa do odbioru dnia: ")
     pick_up_time = models.TimeField(auto_now=False, auto_now_add=False, verbose_name="Paczka będzie gotowa do odbioru o godzinie: ")
     pick_up_comment = models.TextField(max_length=240, verbose_name="Komentarz dla kuriera")

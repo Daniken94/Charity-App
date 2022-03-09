@@ -235,21 +235,50 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$step.parentElement.hidden = this.currentStep >= 6;
 
       // TODO: get data from inputs and show them in summary
+
+
+
+
+      // const summary = document.getElementsByClassName("form-group")
+
+      // document.addEventListener('click', function(event) {
+      //   event.preventDefault()
+  
+      //   fetch("http://127.0.0.1:8000/adddonation/")
+      //     .then 
+      // }
+
+
     }
 
     /**
      * Submit form
+     * 
+     * 
      *
      * TODO: validation, send data to server
      */
+
+
+
+
     submit(e) {
-      e.preventDefault();
+      // e.preventDefault();
+      //   fetch('http://127.0.0.1:8000/adddonation/', {
+      //     method: 'POST',
+      //     body: formdata
+      // })
+      
       this.currentStep++;
       this.updateForm();
     }
+
   }
   const form = document.querySelector(".form--steps");
   if (form !== null) {
     new FormSteps(form);
   }
 });
+
+
+
