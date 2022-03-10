@@ -49,12 +49,165 @@
 
 
 
-<form method="POST" action="">
-    {% csrf_token %} 
-    <table>{{ form }}</table>
-    <input type="submit" value="Create"  />
-</form>
 
 
+<section class="form--steps">
+  <div class="form--steps-instructions">
+    <div class="form--steps-container">
+      <h3>Ważne!</h3>
+      <p data-step="1" class="active">
+        Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy
+        wiedzieć komu najlepiej je przekazać.
+      </p>
+      <p data-step="2">
+        Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy
+        wiedzieć komu najlepiej je przekazać.
+      </p>
+      <p data-step="3">
+       Wybierz jedną, do
+        której trafi Twoja przesyłka.
+      </p>
+      <p data-step="4">Podaj adres oraz termin odbioru rzeczy.</p>
+    </div>
+  </div>
+
+  <div class="form--steps-container">
+
+
+    <form method="POST" action="">
+      {% csrf_token %} 
+      <table>{{ form }}</table>
+      <input type="submit" value="Create"  />
+  </form>
+
+  
+    <!-- <form method="POST" action="">
+      {% csrf_token %}
+      <div data-step="1" class="active">
+        <h3>Zaznacz co chcesz oddać:</h3>
+
+        {% for cat in category %}
+        <div class="form-group form-group--checkbox">
+          <label>
+            <input
+              type="checkbox"
+              name="categories"
+              value="{{ cat }}"
+            />
+            <span class="checkbox"></span>
+            <span class="description"
+              >{{ cat }}</span
+            >
+          </label>
+        </div>
+        {% endfor %}
+      </br>
+    </br>
+  </br>
+</br>
+
+        <h3>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</h3>
+        <div class="form-group form-group--inline">
+          <label>
+            Liczba 60l worków:
+            <input type="number" name="quantity" step="1" min="1" />
+          </label>
+        </div>
+      </br>
+    </br>
+  </br>
+</br>
+
+        <h3>Wybierz organizacje, której chcesz pomóc:</h3>
+
+        {% for i in inst %}
+        <div class="form-group form-group--checkbox">
+          <label>
+            <input type="radio" name="institution" value="{{ i.name }}" />
+            <span class="checkbox radio"></span>
+            <span class="description">
+              <div class="title">{{ i.name }}</div>
+              <div class="subtitle">
+                {{ i.description }}
+              </div>
+            </span>
+          </label>
+        </div>
+        {% endfor %}
+      </br>
+    </br>
+  </br>
+</br>
+
+        <h3>Podaj adres oraz termin odbioru rzecz przez kuriera:</h3>
+
+        <div class="form-section form-section--columns">
+          <div class="form-section--column">
+            <h4>Adres odbioru</h4>
+            <div class="form-group form-group--inline">
+              <label> Ulica <input type="text" name="street" /> </label>
+            </div>
+
+            <div class="form-group form-group--inline">
+              <label> Numer domu <input type="text" name="home_number" /> </label>
+            </div>
+
+            <div class="form-group form-group--inline">
+              <label> Miasto <input type="text" name="city" /> </label>
+            </div>
+
+            <div class="form-group form-group--inline">
+              <label>
+                Kod pocztowy <input type="text" name="zip_code" />
+              </label>
+            </div>
+
+            <div class="form-group form-group--inline">
+              <label>
+                Numer telefonu <input type="phone" name="phone_number" />
+              </label>
+            </div>
+          </div>
+
+          <div class="form-section--column">
+            <h4>Termin odbioru</h4>
+            <div class="form-group form-group--inline">
+              <label> Data <input type="date" name="pick_up_date" /> </label>
+            </div>
+
+            <div class="form-group form-group--inline">
+              <label> Godzina <input type="time" name="pick_up_time" /> </label>
+            </div>
+
+            <div class="form-group form-group--inline">
+              <label>
+                Uwagi dla kuriera
+                <textarea name="pick_up_comment" rows="5"></textarea>
+              </label>
+            </div>
+          </div>
+        </div>
+      </br>
+    </br>
+  </br>
+</br>
+
+
+        <div class="form-group form-group--buttons">
+          <button type="submit" class="btn">Potwierdzam</button>
+        </div>
+
+
+
+
+
+      </div>
+      
+
+      
+      
+    </form> -->
+  </div>
+</section>
 
 {% endblock %}

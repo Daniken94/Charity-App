@@ -260,14 +260,16 @@ document.addEventListener("DOMContentLoaded", function() {
      */
 
 
+// window.location
 
 
     submit(e) {
-      // e.preventDefault();
-      //   fetch('http://127.0.0.1:8000/adddonation/', {
-      //     method: 'POST',
-      //     body: formdata
-      // })
+      e.preventDefault();
+      let formdata = new FormData(document.getElementById('donationForm'));
+        fetch('/adddonation/', {
+          method: 'POST',
+          body: formdata
+      })
       
       this.currentStep++;
       this.updateForm();

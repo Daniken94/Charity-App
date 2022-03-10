@@ -42,5 +42,5 @@ class AddDonation(View):
         if form.is_valid():
             donation = form.save(commit=False)
             donation.user = request.user
-            donation.save()
+            donation.save()  
         return render(request, "form-confirmation.html", {"form": form})
